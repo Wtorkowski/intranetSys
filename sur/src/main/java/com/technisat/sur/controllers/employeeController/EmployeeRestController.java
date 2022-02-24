@@ -1,11 +1,10 @@
-package com.technisat.sur.controllers.employeeControllers;
+package com.technisat.sur.controllers.employeeController;
 
 
 import com.technisat.sur.models.Employee;
 import com.technisat.sur.repositories.EmployeeRepository;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -19,13 +18,13 @@ public class EmployeeRestController {
 
     //All employees
     @GetMapping("/employees")
-    List<Employee> all() {
+    List<Employee> allEmployees() {
         return repository.findAll();
     }
 
     @PostMapping("/employees")
     Employee newEmployee(@RequestBody Employee newEmployee) {
-        newEmployee.setRegistrationDate(LocalDateTime.now());
+//        newEmployee.setEmploymentDate(LocalDateTime.now());
         return repository.save(newEmployee);
     }
 
@@ -41,9 +40,10 @@ public class EmployeeRestController {
 
         return repository.findById(id)
                 .map(employee -> {
-                    employee.setName(newEmployee.getName());
-                    employee.setPosition(newEmployee.getPosition());
+                    employee.setFirstName(newEmployee.getFirstName());
+                    employee.setLastName(newEmployee.getLastName());
                     employee.setPassword(newEmployee.getPassword());
+                    employee.setDepartment(newEmployee.getDepartment());
                     return repository.save(employee);
                 })
                 .orElseGet(() -> {

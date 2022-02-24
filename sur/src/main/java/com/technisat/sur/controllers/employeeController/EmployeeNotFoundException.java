@@ -1,4 +1,4 @@
-package com.technisat.sur.controllers.employeeControllers;
+package com.technisat.sur.controllers.employeeController;
 
 class EmployeeNotFoundException extends RuntimeException {
     EmployeeNotFoundException(Long id) {

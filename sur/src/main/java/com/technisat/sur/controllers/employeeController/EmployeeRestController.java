@@ -47,7 +47,7 @@ public class EmployeeRestController {
                     return repository.save(employee);
                 })
                 .orElseGet(() -> {
-                    newEmployee.setId(id);
+                    newEmployee.setEmployeeId(id);
                     return repository.save(newEmployee);
                 });
     }

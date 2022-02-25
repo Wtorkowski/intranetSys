@@ -19,10 +19,9 @@ public class TaskRestController {
 
     //All tasks
     @GetMapping("/tasks")
-    List<Task> alltasks() {return repository.findAll();
+    List<Task> alltasks() {
+        return repository.findAll();
     }
-
-
 
 
 }

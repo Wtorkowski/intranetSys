@@ -15,28 +15,17 @@ import javax.persistence.*;
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "employee_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long employeeId;
 
-    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name")
     private String lastName;
-
 
     private String password;
 
-
     private String department;
-//    private LocalDateTime employmentDate;
 
-
-    public Employee setPassword(String password) {
-        this.password = password;
-        return this;
-    }
 
     public Employee(String firstName, String lastName, String password, String department) {
         this.firstName = firstName;

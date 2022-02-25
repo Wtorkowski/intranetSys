@@ -15,30 +15,25 @@ import java.time.LocalDateTime;
 public class Task {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "task_id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(insertable = false, updatable = false, name = "employee_id")
+    @OneToOne(optional = false)
+    @JoinColumn(name = "created_by", referencedColumnName = "employeeId")
     private Employee createdBy;
 
     private String department;
 
-    @Column(name = "issue_description")
     private String issue;
 
-    @Column(name = "created_date")
     private LocalDateTime createdDate;
 
-    @Column(name = "solution")
     private String solution;
 
-    @ManyToOne
-    @JoinColumn(insertable = false, updatable = false, name = "employee_id")
+    @OneToOne(optional = false)
+    @JoinColumn(name = "done_by", referencedColumnName = "employeeId")
     private Employee doneBy;
 
-    @Column(name = "done_date")
     private LocalDateTime doneDate;
 
 }
